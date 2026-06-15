@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espace Élève | Le Moment Énergie Lille</title>
+  <meta name="description" content="Accédez à vos formations en ligne Reiki Usui et massages bien-être. Espace d'apprentissage Le Moment Énergie à Lille.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Spécificités pour l'espace catalogue */
+    .dashboard-hero {
+      background-color: var(--color-primary-bg);
+      padding: 120px 0 60px;
+      text-align: center;
+      border-bottom: 1px solid var(--color-sand);
+    }
+    .progress-overview {
+      background-color: var(--color-white);
+      max-width: 600px;
+      margin: -30px auto 40px;
+      padding: 24px 30px;
+      border-radius: var(--border-radius-md);
+      box-shadow: var(--shadow-medium);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      position: relative;
+      z-index: 10;
+    }
+    .progress-bar-container {
+      flex-grow: 1;
+      height: 12px;
+      background-color: var(--color-primary-bg);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background-color: var(--color-accent-gold);
+      width: 0%; /* Dynamic */
+      transition: width 0.8s ease;
+    }
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      padding: 60px 0 100px;
+    }
+    .course-card {
+      background-color: var(--color-white);
+      border-radius: var(--border-radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-subtle);
+      border: 1px solid var(--color-sand);
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+    }
+    .course-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-medium);
+    }
+    .course-header {
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+    .course-header img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .course-body {
+      padding: 30px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .course-body h3 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      color: var(--color-text-dark);
+    }
+    .course-body p {
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+    .course-footer {
+      border-top: 1px solid var(--color-sand);
+      padding-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .course-progress {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- --- HEADER / NAVIGATION --- -->
+  <header class="scrolled">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <span class="logo-main">Le Moment Énergie</span>
+        <span class="logo-sub">Espace Formations</span>
+      </a>
+      
+      <button class="burger-menu" id="burger-btn" aria-label="Ouvrir le menu">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </button>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html" class="nav-link">Retour au Site</a></li>
+        <li><a href="formations.html" class="nav-link active">Mes Formations</a></li>
+        <li><a href="index.html#contact" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.8rem; margin-left: 10px;">Aide / Support</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- --- HERO --- -->
+  <section class="dashboard-hero">
+    <div class="container">
+      <h1 style="font-size: 3rem; margin-bottom: 15px; color: var(--color-text-dark);">Votre Espace d'Apprentissage</h1>
+      <p style="color: var(--color-text-muted); max-width: 600px; margin: 0 auto;">Retrouvez vos cours, suivez votre progression et partagez avec la communauté de praticiens.</p>
+    </div>
+  </section>
+
+  <!-- --- PROGRESS OVERVIEW --- -->
+  <div class="container">
+    <div class="progress-overview">
+      <div style="flex-grow: 1;">
+        <span style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--color-text-muted); display: block; margin-bottom: 6px;">Progression Globale</span>
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" id="global-progress-bar"></div>
+        </div>
+      </div>
+      <div style="text-align: right; min-width: 70px;">
+        <span style="font-size: 1.6rem; font-family: var(--font-serif); color: var(--color-primary); font-weight: 600;" id="global-progress-text">0%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- --- COURSE LIST --- -->
+  <main class="container">
+    <div class="course-grid">
+      
+      <!-- Course 1 -->
+      <div class="course-card">
+        <div class="course-header">
+          <img src="images/reiki.png" alt="Formation Reiki Usui">
+        </div>
+        <div class="course-body">
+          <span style="font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-gold-dark); font-weight: 600; margin-bottom: 8px; display: block;">Énergétique</span>
+          <h3>Reiki Usui - Niveau 1 (Shoden)</h3>
+          <p>Initiez-vous au Reiki traditionnel japonais. Ce cours couvre l'histoire du Reiki, l'auto-traitement, les soins rapides et l'équilibrage des chakras.</p>
+          <div class="course-footer">
+            <span class="course-progress" id="progress-reiki">Progression : 0%</span>
+            <a href="cours-player.html?course=reiki" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.85rem;">Continuer</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course 2 -->
+      <div class="course-card">
+        <div class="course-header">
+          <img src="images/massage.png" alt="Formation Massage Californien">
+        </div>
+        <div class="course-body">
+          <span style="font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-gold-dark); font-weight: 600; margin-bottom: 8px; display: block;">Massage Corporel</span>
+          <h3>Massage Californien &amp; Sensoriel</h3>
+          <p>Apprenez à structurer un massage enveloppant et relaxant. Apprenez le rythme des pressions, les huiles essentielles et le protocole complet.</p>
+          <div class="course-footer">
+            <span class="course-progress" id="progress-massage">Progression : 0%</span>
+            <a href="cours-player.html?course=massage" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.85rem;">Continuer</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- --- FOOTER --- -->
+  <footer style="padding: 40px 0; border-top: 1px solid var(--color-sand);">
+    <div class="container text-center" style="font-size: 0.85rem; color: rgba(255,255,255,0.5);">
+      <p>&copy; 2026 Le Moment Énergie • Espace Apprentissage. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Burger Menu logic for catalog page
+      const burgerBtn = document.getElementById('burger-btn');
+      const navMenu = document.getElementById('nav-menu');
+      if (burgerBtn && navMenu) {
+        burgerBtn.addEventListener('click', () => {
+          burgerBtn.classList.toggle('active');
+          navMenu.classList.toggle('active');
+        });
+      }
+
+      // Calculate progress using local storage
+      const calculateProgress = () => {
+        // We define total lessons per course
+        const reikiLessonsCount = 5;
+        const massageLessonsCount = 5;
+
+        // Retrieve checked values
+        let reikiChecked = 0;
+        let massageChecked = 0;
+
+        for (let i = 1; i <= reikiLessonsCount; i++) {
+          if (localStorage.getItem(`reiki-lesson-${i}-completed`) === 'true') {
+            reikiChecked++;
+          }
+        }
+        for (let i = 1; i <= massageLessonsCount; i++) {
+          if (localStorage.getItem(`massage-lesson-${i}-completed`) === 'true') {
+            massageChecked++;
+          }
+        }
+
+        const reikiPercent = Math.round((reikiChecked / reikiLessonsCount) * 100);
+        const massagePercent = Math.round((massageChecked / massageLessonsCount) * 100);
+        const globalPercent = Math.round(((reikiChecked + massageChecked) / (reikiLessonsCount + massageLessonsCount)) * 100);
+
+        // Update DOM
+        document.getElementById('progress-reiki').textContent = `Progression : ${reikiPercent}%`;
+        document.getElementById('progress-massage').textContent = `Progression : ${massagePercent}%`;
+        document.getElementById('global-progress-bar').style.width = `${globalPercent}%`;
+        document.getElementById('global-progress-text').textContent = `${globalPercent}%`;
+      };
+
+      calculateProgress();
+    });
+  </script>
+</body>
+</html>
