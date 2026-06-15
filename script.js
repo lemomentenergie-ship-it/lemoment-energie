@@ -86,10 +86,19 @@ document.addEventListener('DOMContentLoaded', () => {
       const sectionTop = current.offsetTop - 120; // adjust offset for header
       const sectionId = current.getAttribute('id');
       
-      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-        document.querySelector(`.nav-menu a[href*=${sectionId}]`)?.classList.add('active');
-      } else {
-        document.querySelector(`.nav-menu a[href*=${sectionId}]`)?.classList.remove('active');
+      if (sectionId) {
+        try {
+          const link = document.querySelector(`.nav-menu a[href*="${sectionId}"]`);
+          if (link) {
+            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          }
+        } catch (e) {
+          // Prevent selector errors if id is unusual
+        }
       }
     });
   };
