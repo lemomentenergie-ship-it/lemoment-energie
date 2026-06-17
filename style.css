@@ -2,10 +2,10 @@
 
 /* --- DESIGN SYSTEM & CSS VARIABLES --- */
 :root {
-  --color-primary: #4A5D4E;      /* Sage Green */
+  --color-primary: #BA735D;      /* Mocha Mousse*/
   --color-primary-light: #6E8573;
   --color-primary-bg: #F0F4F1;
-  --color-bg-cream: #FAF8F5;     /* Warm Cream Background */
+  --color-bg-cream: #F0EAD6;     /* Egret */
   --color-accent-gold: #C5A880;  /* Muted Gold */
   --color-accent-gold-dark: #A98A62;
   --color-text-dark: #1C2B21;    /* Deep Forest Charcoal */
